@@ -1,12 +1,22 @@
 # Validation DSL
 
 ### 사용 예시
-Validator.value("email", email)
-    .notBlank()
-    
-Validator.value("name", name)
+  Validator.validate("number", number)
+    .greaterThan(10);
+
+  Validator.validate("name", name)
     .notBlank()
     .maxLength(8);
+    .satisfies(s -> s.equals(name));
+
+  Validate.validate("listName", list)
+    .notNull()
+    .notEmpty()
+    .sizeAtMost(5)
+    .forEach("element", e -> e
+      .notNull()
+      .satisfies(s -> !s.isBlank())
+    );
 
 - [x] 공통 검증
   - [x] notNull 조건
