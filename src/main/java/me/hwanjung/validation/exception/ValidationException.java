@@ -2,7 +2,7 @@ package me.hwanjung.validation.exception;
 
 public class ValidationException extends RuntimeException {
 
-    public ValidationException(String valueName, String message) {
-        super("Validation failed on value '" + valueName + "': " + message);
+    public ValidationException(String message) {
+        super("Validation failed: " + message);
     }
 }

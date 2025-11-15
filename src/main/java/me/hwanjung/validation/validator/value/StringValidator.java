@@ -5,20 +5,20 @@ import me.hwanjung.validation.exception.ValidationException;
 
 public class StringValidator extends BaseValidator<String> {
 
-    public StringValidator(String fieldName, String field) {
-        super(fieldName, field);
+    public StringValidator(String field) {
+        super(field);
     }
 
     public StringValidator notBlank() {
         if (field == null || field.trim().isEmpty()) {
-            throw new ValidationException(fieldName, "must not be blank");
+            throw new ValidationException("must not be blank");
         }
         return this;
     }
 
     public StringValidator notEmpty() {
         if (field == null || field.isEmpty()) {
-            throw new ValidationException(fieldName, "must not be blank");
+            throw new ValidationException("must not be blank");
         }
         return this;
     }
@@ -28,7 +28,7 @@ public class StringValidator extends BaseValidator<String> {
             return this;
         }
         if (field.length() > maxLength) {
-            throw new ValidationException(fieldName, "must not be greater than " + maxLength);
+            throw new ValidationException("must not be greater than " + maxLength);
         }
         return this;
     }
@@ -38,7 +38,7 @@ public class StringValidator extends BaseValidator<String> {
             return this;
         }
         if (field.length() < minLength) {
-            throw new ValidationException(fieldName, "must not be less than " + minLength);
+            throw new ValidationException("must not be less than " + minLength);
         }
         return this;
     }

@@ -15,7 +15,7 @@ public class BaseValidatorTest {
 
         // when & then
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value).notNull()
+            () -> Validator.validate(value).notNull()
         );
     }
 
@@ -27,7 +27,7 @@ public class BaseValidatorTest {
 
         // when & then
         Assertions.assertDoesNotThrow(
-            () -> Validator.validate("value", value).notNull()
+            () -> Validator.validate(value).notNull()
         );
     }
 
@@ -37,7 +37,7 @@ public class BaseValidatorTest {
         Object value = "value";
 
         Assertions.assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .satisfies(v -> true)
         );
     }
@@ -48,7 +48,7 @@ public class BaseValidatorTest {
         Object value = "value";
 
         Assertions.assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .satisfies(v -> false)
         );
     }

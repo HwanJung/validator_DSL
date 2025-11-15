@@ -6,11 +6,9 @@ import java.util.function.Predicate;
 
 public class BaseValidator<T> {
 
-    protected final String fieldName;
     protected final T field;
 
-    public BaseValidator(String fieldName, T field) {
-        this.fieldName = fieldName;
+    public BaseValidator(T field) {
         this.field = field;
     }
 
@@ -22,7 +20,7 @@ public class BaseValidator<T> {
      */
     public BaseValidator<T> notNull() {
         if (this.field == null) {
-            throw new ValidationException(fieldName, "must not be NULL");
+            throw new ValidationException("must not be NULL");
         }
         return this;
     }
@@ -38,7 +36,7 @@ public class BaseValidator<T> {
             return this;
         }
         if (!predicate.test(this.field)) {
-            throw new ValidationException(fieldName, "must satisfies the condition that user set");
+            throw new ValidationException("must satisfies the condition that user set");
         }
         return this;
     }

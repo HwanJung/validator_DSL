@@ -18,7 +18,7 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                     .notBlank()
         );
     }
@@ -32,11 +32,11 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value1)
+            () -> Validator.validate(value1)
                     .notBlank()
         );
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value2)
+            () -> Validator.validate(value2)
                     .notBlank()
         );
     }
@@ -49,7 +49,7 @@ public class StringValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                     .notBlank()
         );
     }
@@ -62,7 +62,7 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .notEmpty()
         );
     }
@@ -75,7 +75,7 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                     .notEmpty()
         );
     }
@@ -88,7 +88,7 @@ public class StringValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                     .notEmpty()
         );
     }
@@ -102,7 +102,7 @@ public class StringValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .maxLength(maxLength)
         );
     }
@@ -116,7 +116,7 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .maxLength(maxLength)
         );
     }
@@ -130,7 +130,7 @@ public class StringValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                     .maxLength(maxLength)
         );
     }
@@ -144,7 +144,7 @@ public class StringValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
             .minLength(minLength)
         );
     }
@@ -158,7 +158,7 @@ public class StringValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate("value", value)
+            () -> Validator.validate(value)
                 .minLength(minLength));
     }
 
@@ -170,6 +170,6 @@ public class StringValidatorTest {
         String value1 = "abcde";
 
         // when & then
-        assertDoesNotThrow(() -> new StringValidator("name", value1).minLength(3));
+        assertDoesNotThrow(() -> new StringValidator(value1).minLength(3));
     }
 }
