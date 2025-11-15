@@ -34,6 +34,9 @@ public class BaseValidator<T> {
      * @return BaseValidator
      */
     public BaseValidator<T> satisfies(Predicate<T> predicate) {
+        if (this.value == null) {
+            return this;
+        }
         if (!predicate.test(this.value)) {
             throw new ValidationException(valueName, "must satisfies the condition that user set");
         }
