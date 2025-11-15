@@ -1,7 +1,7 @@
-package me.hwanjung.validator;
+package me.hwanjung.validation.validator;
 
-import me.hwanjung.validator.value.NumberValidator;
-import me.hwanjung.validator.value.StringValidator;
+import me.hwanjung.validation.validator.value.NumberValidator;
+import me.hwanjung.validation.validator.value.StringValidator;
 
 public class Validator {
 

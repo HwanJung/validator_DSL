@@ -1,10 +1,10 @@
-package me.hwanjung.validator.value;
+package me.hwanjung.validation.validator.value;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import me.hwanjung.validator.Validator;
-import me.hwanjung.validator.exception.ValidationException;
+import me.hwanjung.validation.validator.Validator;
+import me.hwanjung.validation.exception.ValidationException;
 
 public class BaseValidatorTest {
 

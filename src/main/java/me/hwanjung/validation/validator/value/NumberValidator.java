@@ -1,7 +1,7 @@
-package me.hwanjung.validator.value;
+package me.hwanjung.validation.validator.value;
 
-import me.hwanjung.validator.BaseValidator;
-import me.hwanjung.validator.exception.ValidationException;
+import me.hwanjung.validation.validator.BaseValidator;
+import me.hwanjung.validation.exception.ValidationException;
 
 public class NumberValidator<N extends Number & Comparable<N>> extends BaseValidator<N> {
 

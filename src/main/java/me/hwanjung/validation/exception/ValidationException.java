@@ -1,4 +1,4 @@
-package me.hwanjung.validator.exception;
+package me.hwanjung.validation.exception;
 
 public class ValidationException extends RuntimeException {
 
