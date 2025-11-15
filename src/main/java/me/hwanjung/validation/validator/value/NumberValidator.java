@@ -14,11 +14,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("min must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(min) <= 0) {
-            throw new ValidationException(valueName, "must be greater than " + min);
+        if (field.compareTo(min) <= 0) {
+            throw new ValidationException(fieldName, "must be greater than " + min);
         }
         return this;
     }
@@ -28,11 +28,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("max must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(max) >= 0) {
-            throw new ValidationException(valueName, "must be less than " + max);
+        if (field.compareTo(max) >= 0) {
+            throw new ValidationException(fieldName, "must be less than " + max);
         }
         return this;
     }
@@ -42,11 +42,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("min must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(min) < 0) {
-            throw new ValidationException(valueName, "must be greater than or equal to " + min);
+        if (field.compareTo(min) < 0) {
+            throw new ValidationException(fieldName, "must be greater than or equal to " + min);
         }
         return this;
     }
@@ -56,11 +56,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("max must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(max) > 0) {
-            throw new ValidationException(valueName, "must be less than or equal to " + max);
+        if (field.compareTo(max) > 0) {
+            throw new ValidationException(fieldName, "must be less than or equal to " + max);
         }
         return this;
     }
@@ -70,11 +70,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("min and max must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(min) <= 0 || value.compareTo(max) >= 0) {
-            throw new ValidationException(valueName, "must be > " + min + " and < " + max);
+        if (field.compareTo(min) <= 0 || field.compareTo(max) >= 0) {
+            throw new ValidationException(fieldName, "must be > " + min + " and < " + max);
         }
         return this;
     }
@@ -84,11 +84,11 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("min and max must not be null");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.compareTo(min) < 0 || value.compareTo(max) > 0) {
-            throw new ValidationException(valueName, "must be between " + min + " and " + max + " (inclusive)");
+        if (field.compareTo(min) < 0 || field.compareTo(max) > 0) {
+            throw new ValidationException(fieldName, "must be between " + min + " and " + max + " (inclusive)");
         }
         return this;
     }
@@ -99,24 +99,24 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             throw new IllegalArgumentException("Divisor cannot be zero");
         }
 
-        if (value == null) {
+        if (field == null) {
             return this;
         }
         if (!isIntegralNumber()) {
-            throw new ValidationException(valueName, "must be an integral number");
+            throw new ValidationException(fieldName, "must be an integral number");
         }
 
-        long v = value.longValue();
+        long v = field.longValue();
         if (v % number != 0) {
-            throw new ValidationException(valueName, "must be multiple of " + number);
+            throw new ValidationException(fieldName, "must be multiple of " + number);
         }
         return this;
     }
 
     private boolean isIntegralNumber() {
-        return value instanceof Integer
-            || value instanceof Long
-            || value instanceof Byte
-            || value instanceof Short;
+        return field instanceof Integer
+            || field instanceof Long
+            || field instanceof Byte
+            || field instanceof Short;
     }
 }

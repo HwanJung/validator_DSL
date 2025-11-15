@@ -10,35 +10,35 @@ public class StringValidator extends BaseValidator<String> {
     }
 
     public StringValidator notBlank() {
-        if (value == null || value.trim().isEmpty()) {
-            throw new ValidationException(valueName, "must not be blank");
+        if (field == null || field.trim().isEmpty()) {
+            throw new ValidationException(fieldName, "must not be blank");
         }
         return this;
     }
 
     public StringValidator notEmpty() {
-        if (value == null || value.isEmpty()) {
-            throw new ValidationException(valueName, "must not be blank");
+        if (field == null || field.isEmpty()) {
+            throw new ValidationException(fieldName, "must not be blank");
         }
         return this;
     }
 
     public StringValidator maxLength(int maxLength) {
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.length() > maxLength) {
-            throw new ValidationException(valueName, "must not be greater than " + maxLength);
+        if (field.length() > maxLength) {
+            throw new ValidationException(fieldName, "must not be greater than " + maxLength);
         }
         return this;
     }
 
     public StringValidator minLength(int minLength) {
-        if (value == null) {
+        if (field == null) {
             return this;
         }
-        if (value.length() < minLength) {
-            throw new ValidationException(valueName, "must not be less than " + minLength);
+        if (field.length() < minLength) {
+            throw new ValidationException(fieldName, "must not be less than " + minLength);
         }
         return this;
     }
