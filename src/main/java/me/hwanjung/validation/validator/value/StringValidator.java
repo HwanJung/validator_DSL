@@ -5,8 +5,8 @@ import me.hwanjung.validation.exception.ValidationException;
 
 public class StringValidator extends BaseValidator<String> {
 
-    public StringValidator(String valueName, String value) {
-        super(valueName, value);
+    public StringValidator(String fieldName, String field) {
+        super(fieldName, field);
     }
 
     public StringValidator notBlank() {

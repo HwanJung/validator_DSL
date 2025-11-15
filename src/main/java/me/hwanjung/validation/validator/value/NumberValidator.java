@@ -5,8 +5,8 @@ import me.hwanjung.validation.exception.ValidationException;
 
 public class NumberValidator<N extends Number & Comparable<N>> extends BaseValidator<N> {
 
-    public NumberValidator(String valueName, N value) {
-        super(valueName, value);
+    public NumberValidator(String fieldName, N field) {
+        super(fieldName, field);
     }
 
     public NumberValidator<N> greaterThan(N min) {
