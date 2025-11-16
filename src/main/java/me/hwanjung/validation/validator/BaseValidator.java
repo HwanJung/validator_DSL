@@ -1,5 +1,6 @@
 package me.hwanjung.validation.validator;
 
+import me.hwanjung.validation.exception.ErrorMessage;
 import me.hwanjung.validation.exception.ValidationException;
 
 import java.util.function.Predicate;
@@ -12,31 +13,19 @@ public class BaseValidator<T> {
         this.field = field;
     }
 
-    /**
-     * Validate the value is not null
-     *
-     * @return BaseValidator
-     * @throws ValidationException when the value is null
-     */
     public BaseValidator<T> notNull() {
         if (this.field == null) {
-            throw new ValidationException("must not be NULL");
+            throw new ValidationException(ErrorMessage.MUST_NOT_BE_NULL);
         }
         return this;
     }
 
-    /**
-     * Validate the value satisfies the condition that user set
-     *
-     * @param predicate condition to satisfy
-     * @return BaseValidator
-     */
     public BaseValidator<T> satisfies(Predicate<T> predicate) {
         if (this.field == null) {
             return this;
         }
         if (!predicate.test(this.field)) {
-            throw new ValidationException("must satisfies the condition that user set");
+            throw new ValidationException(ErrorMessage.DOES_NOT_SATISFY_CONDITION);
         }
         return this;
     }

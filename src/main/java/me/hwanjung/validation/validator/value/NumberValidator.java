@@ -1,5 +1,6 @@
 package me.hwanjung.validation.validator.value;
 
+import me.hwanjung.validation.exception.ErrorMessage;
 import me.hwanjung.validation.validator.BaseValidator;
 import me.hwanjung.validation.exception.ValidationException;
 
@@ -14,7 +15,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
     @Override
     public NumberValidator<N> notNull() {
         if (this.field == null) {
-            throw new ValidationException("must not be NULL");
+            throw new ValidationException(ErrorMessage.MUST_NOT_BE_NULL);
         }
         return this;
     }
@@ -25,7 +26,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (!predicate.test(this.field)) {
-            throw new ValidationException("must satisfies the condition that user set");
+            throw new ValidationException(ErrorMessage.DOES_NOT_SATISFY_CONDITION);
         }
         return this;
     }
@@ -39,7 +40,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(min) <= 0) {
-            throw new ValidationException("must be greater than " + min);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_GREATER_THAN, min.toString());
         }
         return this;
     }
@@ -53,7 +54,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(max) >= 0) {
-            throw new ValidationException("must be less than " + max);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_LESS_THAN, max.toString());
         }
         return this;
     }
@@ -67,7 +68,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(min) < 0) {
-            throw new ValidationException("must be greater than or equal to " + min);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_GREATER_OR_EQUAL, min.toString());
         }
         return this;
     }
@@ -81,7 +82,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(max) > 0) {
-            throw new ValidationException("must be less than or equal to " + max);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_LESS_OR_EQUAL, max.toString());
         }
         return this;
     }
@@ -95,7 +96,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(min) <= 0 || field.compareTo(max) >= 0) {
-            throw new ValidationException("must be > " + min + " and < " + max);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_BETWEEN_EXCLUSIVE, min.toString(), max.toString());
         }
         return this;
     }
@@ -109,7 +110,7 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (field.compareTo(min) < 0 || field.compareTo(max) > 0) {
-            throw new ValidationException("must be between " + min + " and " + max + " (inclusive)");
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_BETWEEN_INCLUSIVE, min.toString(), max.toString());
         }
         return this;
     }
@@ -124,12 +125,12 @@ public class NumberValidator<N extends Number & Comparable<N>> extends BaseValid
             return this;
         }
         if (!isIntegralNumber()) {
-            throw new ValidationException("must be an integral number");
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_INTEGER);
         }
 
         long v = field.longValue();
         if (v % number != 0) {
-            throw new ValidationException("must be multiple of " + number);
+            throw new ValidationException(ErrorMessage.NUMBER_MUST_BE_MULTIPLE_OF, String.valueOf(number));
         }
         return this;
     }
