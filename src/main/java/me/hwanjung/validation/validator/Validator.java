@@ -26,7 +26,7 @@ public class Validator {
         return new ListValidator<>(list, StringValidator::new);
     }
 
-    public
-
-    public static <
+    public static <N extends Number & Comparable<N>> ListValidator<N, NumberValidator<N>> validateNumbers(List<N> list) {
+        return new ListValidator<>(list, NumberValidator::new);
+    }
 }
