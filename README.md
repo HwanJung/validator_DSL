@@ -1,5 +1,37 @@
 # Validation DSL
 
+## 사용 방법
+
+### Gradle
+```groovy
+// Add in build.gradle
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.HwanJung:validation-dsl:Tag'
+}
+```
+
+### Maven
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.github.HwanJung</groupId>
+  <artifactId>validation-dsl</artifactId>
+  <version>Tag</version>
+</dependency>
+```
+
+
 ## 사용 예시
 
 ### Integer, Long, Double 등의 Number 타입의 값 검증
