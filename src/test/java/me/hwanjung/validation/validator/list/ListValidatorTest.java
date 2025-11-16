@@ -19,7 +19,7 @@ class ListValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate(list).notEmpty()
+            () -> Validator.validateNumbers(list).notEmpty()
         );
     }
 
@@ -32,7 +32,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).notEmpty()
+            () -> Validator.validateNumbers(list).notEmpty()
         );
     }
 
@@ -45,7 +45,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).sizeAtLeast(min)
+            () -> Validator.validateNumbers(list).sizeAtLeast(min)
         );
     }
 
@@ -58,7 +58,7 @@ class ListValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate(list).sizeAtLeast(min)
+            () -> Validator.validateNumbers(list).sizeAtLeast(min)
         );
     }
 
@@ -72,10 +72,10 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list1).sizeAtLeast(min)
+            () -> Validator.validateNumbers(list1).sizeAtLeast(min)
         );
         assertDoesNotThrow(
-            () -> Validator.validate(list2).sizeAtLeast(min)
+            () -> Validator.validateNumbers(list2).sizeAtLeast(min)
         );
     }
 
@@ -88,7 +88,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).sizeAtMost(max)
+            () -> Validator.validateNumbers(list).sizeAtMost(max)
         );
     }
 
@@ -101,7 +101,7 @@ class ListValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate(list).sizeAtMost(max)
+            () -> Validator.validateNumbers(list).sizeAtMost(max)
         );
     }
 
@@ -113,7 +113,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).size(1)
+            () -> Validator.validateNumbers(list).size(1)
         );
     }
 
@@ -126,7 +126,7 @@ class ListValidatorTest {
 
         // when & then
         assertThrows(ValidationException.class,
-            () -> Validator.validate(list).size(size)
+            () -> Validator.validateNumbers(list).size(size)
         );
     }
 
@@ -139,7 +139,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).size(size)
+            () -> Validator.validateNumbers(list).size(size)
         );
     }
 
@@ -151,7 +151,7 @@ class ListValidatorTest {
 
         // when & then
         assertDoesNotThrow(
-            () -> Validator.validate(list).forEach(null)
+            () -> Validator.validateNumbers(list).forEach(null)
         );
     }
 
@@ -161,8 +161,10 @@ class ListValidatorTest {
         // given
         List<Integer> list = List.of(1, 2, 3);
 
-
         // when & then
-
+        assertThrows(ValidationException.class,
+            () -> Validator.validateNumbers(list)
+                    .forEach(e -> e.greaterThan(2))
+            );
     }
 }
