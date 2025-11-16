@@ -1,20 +1,82 @@
 # Validation DSL
 
 ### 사용 예시
-    int number = 15;
-    Validator.validate(number)
-        .greaterThan(10);
+```
 
-    String name = "name";
-    Validator.validate(name)
-        .notBlank()
-        .maxLength(8);
-        .satisfies(s -> s.equals(name));
+// Integer, Long, Double 등의 Number 타입의 값 검증
 
-    User user = new User("name");
+// 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
+// 모든 Number의 자식 타입에 대해 사용할 수 있는 조건은 아래와 같다.
+int number = 30;
+Validator.validate(number)
+    .notNull()
+    .greaterThan(10)
+    .lessThan(50)
+    .multipleOf(10)
+    .greaterThanOrEqualTo(30)
+    .lessThanOrEqualTo(30)
+    .betweenExclusive(10,50)
+    .betweenInclusive(10,30)
+    .satisfies(n -> n == 30);
+    
+ 
+// multipleOf() 조건은 검증할 타입이 정수형(Integer, Long, Byte, Short)타입일 때만 가능하다.
+int number = 30;
+Validator.validate(number)
+    .multipleOf(10);
+    
+
+// 조건이 만족되지 않으면 ValidationException이 반환된다.
+// 조건이 하나라도 만족되지 않아도 ValidationException이 반환된다.
+int number = 30;
+Validator.validate(number)
+    .notNull()
+    .greaterThan(10)
+    .multipleOf(29);  // throw ValidationException
+    
+
+
+// String 타입의 값 검증
+    
+// 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
+// String 타입에 대해 사용할 수 있는 조건은 아래와 같다.
+
+String name = "name";
+Validator.validate(name)
+    .notNull()
+    .notBlank()
+    .notEmpty()
+    .maxLength(8)
+    .minLength(1)
+    .satisfies(s -> s.equals(name));
+
+
+// 조건이 만족되지 않으면 ValidationException이 반환된다.
+// 조건이 하나라도 만족되지 않아도 ValidationException이 반환된다.
+String name = "name";
+Validator.validate(number)
+    .notNull()
+    .maxLength(2); // throw ValidationException
+    
+
+
+
+
+// 그 이외의 타입에 대한 검증
+    
+// 검증할 변수가 만족해야 하는 조건을 정의한 뒤 조건이 만족되면 아무 일도 일어나지 않는다.
+// 사용할 수 있는 조건은 아래와 같다.
+
+User user = new User("name");
     Validator.validate(user)
         .notNull()
         .satisfies(u -> "name".equals(u.getName()));
+
+
+
+
+    // todo
+
 
     List<String> list = List.of("a", "b", "c");    
     Validator.validateStrings(list)
@@ -73,8 +135,8 @@
         .forEach(e -> e
             .notNull()
         );
-    
-    users.stream().map(
+```
+
 
 - [x] 공통 검증
   - [x] notNull 조건
