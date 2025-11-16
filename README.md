@@ -145,7 +145,7 @@ Validator.validateObjects(users)
     );
 ```
 
-
+## 기능 구현 명세
 - [x] 공통 검증
   - [x] notNull 조건
   - [x] 사용자 지정 조건
