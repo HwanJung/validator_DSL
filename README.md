@@ -1,7 +1,7 @@
 # Validation DSL
 
 ### 사용 예시
-```
+```java
 
 // Integer, Long, Double 등의 Number 타입의 값 검증
 
