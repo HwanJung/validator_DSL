@@ -1,10 +1,10 @@
 package me.hwanjung.validation.validator;
 
-import me.hwanjung.validation.validator.collection.CollectionValidator;import me.hwanjung.validation.validator.collection.list.ListValidator;
+import me.hwanjung.validation.validator.collection.CollectionValidator;
 import me.hwanjung.validation.validator.value.NumberValidator;
 import me.hwanjung.validation.validator.value.StringValidator;
 
-import java.util.Collection;import java.util.List;
+import java.util.Collection;
 
 public class Validator {
 

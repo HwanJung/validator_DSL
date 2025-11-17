@@ -14,4 +14,5 @@ public class ListValidator<E, V extends BaseValidator<E>>
     }
 
     // Additional specific implement for list
+
 }
