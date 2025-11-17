@@ -2,12 +2,12 @@ package me.hwanjung.validation.validator.collection;
 
 import me.hwanjung.validation.exception.ErrorMessage;
 import me.hwanjung.validation.exception.ValidationException;
+import me.hwanjung.validation.rule.ValidationRule;
 import me.hwanjung.validation.validator.BaseValidator;
 
 import java.util.Collection;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class CollectionValidator<E, C extends Collection<E>, V extends BaseValidator<E>>
     extends BaseValidator<C> {
@@ -28,11 +28,11 @@ public class CollectionValidator<E, C extends Collection<E>, V extends BaseValid
     }
 
     @Override
-    public CollectionValidator<E, C, V> satisfies(Predicate<C> predicate) {
+    public CollectionValidator<E, C, V> satisfies(ValidationRule<C> rule) {
         if (this.field == null) {
             return this;
         }
-        if (!predicate.test(this.field)) {
+        if (!rule.isValid(this.field)) {
             throw new ValidationException(ErrorMessage.DOES_NOT_SATISFY_CONDITION);
         }
         return this;

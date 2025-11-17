@@ -1,10 +1,9 @@
 package me.hwanjung.validation.validator.value;
 
 import me.hwanjung.validation.exception.ErrorMessage;
+import me.hwanjung.validation.rule.ValidationRule;
 import me.hwanjung.validation.validator.BaseValidator;
 import me.hwanjung.validation.exception.ValidationException;
-
-import java.util.function.Predicate;
 
 public class StringValidator extends BaseValidator<String> {
 
@@ -21,11 +20,11 @@ public class StringValidator extends BaseValidator<String> {
     }
 
     @Override
-    public StringValidator satisfies(Predicate<String> predicate) {
+    public StringValidator satisfies(ValidationRule<String> rule) {
         if (this.field == null) {
             return this;
         }
-        if (!predicate.test(this.field)) {
+        if (!rule.isValid(this.field)) {
             throw new ValidationException(ErrorMessage.DOES_NOT_SATISFY_CONDITION);
         }
         return this;
