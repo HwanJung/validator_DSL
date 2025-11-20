@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.HwanJung:validation-dsl:Tag'
+    implementation 'com.github.HwanJung:validation-dsl:v0.1.0'
 }
 ```
 
@@ -27,7 +27,7 @@ dependencies {
 <dependency>
   <groupId>com.github.HwanJung</groupId>
   <artifactId>validation-dsl</artifactId>
-  <version>Tag</version>
+  <version>v0.1.0</version>
 </dependency>
 ```
 
